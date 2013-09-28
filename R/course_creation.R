@@ -25,7 +25,7 @@ preview_chapter = function(inputFile,outputFile,...){
 
 # 3. Log in to DataMind:
 datamind_login = function(email, password){
-  url = paste0("http://api.datamind.org/users/details.json?email=",email,"&password=",password)
+  url = paste0("http://localhost:3000/users/details.json?email=",email,"&password=",password)
   message("Logging in...");
   if(url.exists(url)){
     getURL(url)
@@ -76,8 +76,8 @@ upload_chapter_json = function(theJSON, open=TRUE){
   if(!exists(".DATAMIND_ENV")){
     stop("Please login to DataMind first, using the datamind_login function");    
   } 
-  base_url     = "http://api.datamind.org/chapters/create_from_r.json";
-  redirect_url = "http://www.datamind.org/#/edit_course/";
+  base_url     = "http://localhost:3000/chapters/create_from_r.json";
+  redirect_url = "http://localhost:9000/#/edit_course/";
   auth_token = .DATAMIND_ENV$auth_token;    
   url = paste0(base_url,"?auth_token=", auth_token);
   
@@ -92,8 +92,8 @@ upload_course_json = function(theJSON, open=TRUE){
   if(!exists(".DATAMIND_ENV")){
     stop("Please login to DataMind first, using the datamind_login function");    
   } 
-  base_url     = "http://api.datamind.org/courses/create_from_r.json";
-  redirect_url = "http://www.datamind.org/#/edit_course/";
+  base_url     = "http://localhost:3000/courses/create_from_r.json";
+  redirect_url = "http://localhost:9000/#/edit_course/";
   auth_token = .DATAMIND_ENV$auth_token;    
   url = paste0(base_url,"?auth_token=", auth_token);
   
