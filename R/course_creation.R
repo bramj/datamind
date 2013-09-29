@@ -57,16 +57,18 @@ upload_course = function(open=TRUE){
     } 
   } 
   
-  if (!file.exists("course.yml")){ # Just upload the last chapter in case no specific course file
-    upload_chapter_within_course(chapters[length(chapters)], open=TRUE); #Upload and open the last chapter
-    message("### Succesfully upload the course ###")
-  }
+  # if (!file.exists("course.yml")){ # Just upload the last chapter in case no specific course file
+  #   upload_chapter_within_course(chapters[length(chapters)], open=TRUE); #Upload and open the last chapter
+  #   message("### Succesfully upload the course ###")
+  # }
   
   if (file.exists("course.yml")){
-    upload_chapter_within_course(chapters[length(chapters)], open=FALSE); # Upload the last chapter
+    # upload_chapter_within_course(chapters[length(chapters)], open=FALSE); # Upload the last chapter
     course = yaml.load_file("course.yml");
     the_course_json = toJSON(course);
     upload_course_json(the_course_json);
+  } else {
+    message("### Succesfully upload the course ###")
   }
   
 } 
